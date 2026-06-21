@@ -550,7 +550,7 @@ body {
 
 .charts-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
 }
 
@@ -559,10 +559,14 @@ body {
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 24px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
 }
 
 .chart-card.large {
     grid-column: span 2;
+    min-height: 450px;
 }
 
 .chart-card h3 {
@@ -570,6 +574,13 @@ body {
     font-weight: 600;
     margin-bottom: 20px;
     color: var(--text-secondary);
+    flex-shrink: 0;
+}
+
+.chart-card canvas {
+    flex: 1;
+    min-height: 0;
+    max-height: 400px;
 }
 
 /* Campaigns Table */
@@ -692,6 +703,10 @@ body {
 
 /* Responsive */
 @media (max-width: 1200px) {
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+
     .chart-card.large {
         grid-column: span 1;
     }
@@ -721,6 +736,14 @@ body {
 
     .charts-grid {
         grid-template-columns: 1fr;
+    }
+
+    .chart-card {
+        min-height: 350px;
+    }
+
+    .chart-card canvas {
+        max-height: 300px;
     }
 
     .conversions-grid {
